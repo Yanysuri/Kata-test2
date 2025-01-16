@@ -53,7 +53,7 @@ public class Main {
         int firstNum = 0;
         int secondNum = 0;
         String resultString = "";
-        if ( parties.length >= 4 || parties.length <= 2) throw exception;
+        if ( parties.length != 3) throw exception;
         for (int i = 0; i < arabNums.length; i++) {
             if (arabNums[i].equals(parties[0])) {
                 firstNumIsArab = true;
@@ -82,6 +82,7 @@ public class Main {
                 break;
             }
         }
+        if (firstNum > 10 || secondNum > 10) throw exception;
         boolean isAllNumsArab = firstNumIsArab && secondNumIsArab;
         boolean isAllNumsRoman = firstNumIsRoman && secondNumIsRoman;
         int result = 0;
@@ -122,7 +123,8 @@ public class Main {
                 default: throw exception;
             }
         }
-        if (!isAllNumsArab && !isAllNumsRoman){throw exception;}
+        if (!isAllNumsArab && !isAllNumsRoman) throw exception;
+        if (result > 100) throw exception;
         if (isAllNumsArab){resultString = Integer.toString(result);}
         if (isAllNumsRoman){resultString = romanNums[(result - 1)];}
         return resultString;
